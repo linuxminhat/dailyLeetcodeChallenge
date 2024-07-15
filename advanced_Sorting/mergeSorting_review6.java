@@ -2,9 +2,10 @@ package advanced_Sorting;
 
 import java.util.Arrays;
 
-public class mergeSorting_learning4 {
+public class mergeSorting_review6 {
+	//implementing merge function 
 	public static int[] mergeFunction(int[] array1, int[] array2) {
-		int n=array1.length+array2.length;
+		int n = array1.length+array2.length;
 		int[] newArray = new int[n];
 		int i=0;
 		int i1=0;
@@ -34,29 +35,22 @@ public class mergeSorting_learning4 {
 		}
 		return newArray;
 	}
-	public static int[] mergeSort(int[] a, int L, int R) {
+	//implementing merge function 
+	public static int[] mergeSort(int[] array, int L, int R) {
 		if(L>R) {
 			return new int[0];
 		}
 		if(L==R) {
-			int[] singleElement = {a[L]};
+			int[] singleElement = {array[L]};
 			return singleElement;
 		}
-		//conclusion
-		
-		
-		//divide 
-		int K=(L+R)/2;
-		int[] a1 = mergeSort(a,L,K);
-		int[] a2 = mergeSort(a,K+1,R);
-		//merge
-		int[] result = mergeFunction(a1,a2);
-		return result;
+		int M =(L+R)/2;
+		int[] array1 = mergeSort(array,L,M);
+		int[] array2 = mergeSort(array,M+1,R);
+		return mergeFunction(array1,array2);
 	}
 	public static void main(String[] args) {
-		int[] array = {4,232,564,2,434,1,32,0,22,33};
-		System.out.println(Arrays.toString(mergeSort(array,0,9)));
+		int[] arrayTesting = {12,43,12,3,324,12,76,39,90,232,1000};
+		System.out.println(Arrays.toString(mergeSort(arrayTesting,0,10)));
 	}
-	 
-
 }
