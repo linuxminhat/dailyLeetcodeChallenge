@@ -1,7 +1,7 @@
 package sorting;
 
 public class selectionSort_review2 {
-	public static int[] array= {121,232,455,22,33,44902,2392,944};
+	public static int[] array= {5,3,2,7,8,1,2};
 	//implementing function to viewing 
 	public static void viewFunction(int number,int[] array) {
 		System.out.printf(" %d ", number);
