@@ -1,6 +1,6 @@
 package linkedlist_learning2;
 
-public class addToBetween_learning3 {
+public class addToBetween_learning4 {
 	//creating class Node 
 	public static class Node{
 		int value;
@@ -9,15 +9,15 @@ public class addToBetween_learning3 {
 			this.value=value;
 		}
 	}
-	//implementing function to view 
-	public static void printingNodeValue(Node headNode) {
-		if(headNode==null) {
-			System.out.println("This linkedlist is empty !");
+	//implementing printing function 
+	public static void printingFunction(Node head) {
+		if(head==null) {
+			System.out.println("This linked list is empty !");
 		}else {
-			Node temp = headNode;
+			Node temp = head;
 			while(temp!=null) {
 				System.out.print(temp.value);
-				temp=temp.next;//assign temp.next value to temp 
+				temp=temp.next;
 				if(temp!=null) {
 					System.out.print("->");
 				}else {
@@ -36,12 +36,14 @@ public class addToBetween_learning3 {
 		}
 		return newNode;
 	}
+	//implementing function addToLast 
 	public static Node addToLast(Node headNode,int value) {
 		Node newNode = new Node(value);
 		if(headNode==null) {
 			return newNode;
 		}else {
-			Node lastNode=headNode;
+			Node lastNode = headNode;
+			//If using lastNode!=null it will go through the last node of lastNode
 			while(lastNode.next!=null) {
 				lastNode=lastNode.next;
 			}
@@ -49,21 +51,19 @@ public class addToBetween_learning3 {
 		}
 		return headNode;
 	}
+	//implementing function to addToBetween
 	public static Node addToBetween(Node headNode,int value,int index) {
-		// cur -> next 
-		// cur -> addedNode -> next 
 		if(index==0) {
-			return addToHead(headNode,value);
+			return addToHead( headNode, value);
 		}else {
 			Node curNode = headNode;
-			Node addedNode = new Node(value);
+			Node newNode = new Node(value);
 			int count=0;
-			while(curNode!=null) {
+			while(curNode.next!=null) {
 				count++;
 				if(count==index) {
-					addedNode.next=curNode.next;
-//					curNode.next=addedNode.next;//Thao tac nay sai vi addedNode.next dang la null
-					curNode.next=addedNode;
+					newNode.next=curNode.next;
+					curNode.next=newNode;
 					break;
 				}
 				curNode=curNode.next;
@@ -72,15 +72,19 @@ public class addToBetween_learning3 {
 		return headNode;
 	}
 	public static void main(String[] args) {
-		//Just testing addToBetween function
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
 		Node n3 = new Node(3);
 		n1.next=n2;
 		n2.next=n3;
-//		Node addedNode1 = addToBetween(n1,1,0);
-//		printingNodeValue(addedNode1);
-		Node addedNode2 = addToBetween(n1,4,1);
-		printingNodeValue(addedNode2);
+		printingFunction(n1);
+		printingFunction(n2);
+		printingFunction(n3);
+		Node newAddedNode = addToHead(n1,0);//This is a method
+		printingFunction(newAddedNode);
+		Node newAddedNode2 = addToLast(n1,4);
+		printingFunction(newAddedNode2);
+		Node newAddedNode3 = addToBetween(n1,10,3);
+		printingFunction(newAddedNode3);
 	}
 }
