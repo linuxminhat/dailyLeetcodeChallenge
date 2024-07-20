@@ -50,10 +50,35 @@ public class addToBetween_learning1 {
 		}
 		return headNode2;
 	}
+	//implementing function add to between 
+	public static Node addToBetween(Node headNode3,int value,int index) {
+		if(index==0) {
+			return addToFirst(headNode3,value);
+		}else {
+			//Finding index 
+			Node newNode = new Node(value);
+			Node curNode = headNode3;
+			int count=0;
+			while(curNode!=null) {
+				count++;
+				if(count==index) {
+					//Thuc hien 
+					newNode.next=curNode.next;
+					curNode.next=newNode;
+					break;
+				}
+				curNode=curNode.next;
+			}
+			
+		}
+		 
+		return headNode3;
+	}
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
 		Node n3 = new Node(3);
+		Node n4 = new Node(4);
 		n1.next=n2;
 		n2.next=n3;
 		printingNodeValue(n1);
@@ -63,6 +88,8 @@ public class addToBetween_learning1 {
 		printingNodeValue(addedHeadNode);
 		Node addedLastNode = addToLast(n3,4);
 		printingNodeValue(addedLastNode);
+		Node newNode1 = addToBetween(n1,0,1);
+		printingNodeValue(newNode1);
 	}
 
 }
