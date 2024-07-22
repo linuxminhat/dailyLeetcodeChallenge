@@ -1,6 +1,6 @@
 package stackArray_review1;
 
-import stackArray.stackArray;
+import stackArray_review5.stackArray;
 
 public class stackArrayImplementing implements stackArray {
 

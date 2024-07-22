@@ -1,4 +1,4 @@
-package stackAndQueue;
+package stackArray_learning;
 
 public interface isStackandQueue {
 	public boolean push(int value);//co the bo nho day 

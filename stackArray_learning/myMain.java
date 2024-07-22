@@ -1,4 +1,4 @@
-package stackAndQueue;
+package stackArray_learning;
 
 public class myMain {
 	public static void main(String[] args) {

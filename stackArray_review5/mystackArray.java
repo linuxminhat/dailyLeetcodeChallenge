@@ -1,30 +1,28 @@
-package stackArray_review3;
+package stackArray_review5;
 
-public class imstackArray implements istackArray {
-	int[] newArray;
-	int SIZE;
-	int topIndex;
-	imstackArray(int size){
-		SIZE=size;
-		newArray = new int[SIZE];
-		topIndex=-1;
+public class mystackArray implements stackArray {
+	private int[] array;
+	private int SIZE;
+	private int topIndex;
+	mystackArray(int size){
+		 SIZE = size;
+		 array = new int[SIZE];
+		 topIndex=-1;//assume the empty array 
 	}
-
 	@Override
 	public boolean push(int value) {
 		if(!isFull()) {
 			topIndex++;
-			newArray[topIndex]=value;
+			array[topIndex]=value;
 			return true;
 		}
-		 
 		return false;
 	}
 
 	@Override
 	public int pop() {
 		if(!isEmpty()) {
-			int value = newArray[topIndex];
+			int value = array[topIndex];
 			topIndex--;
 			return value;
 		}
@@ -33,30 +31,23 @@ public class imstackArray implements istackArray {
 
 	@Override
 	public boolean isFull() {
-		 
 		return topIndex==SIZE-1;
 	}
 
 	@Override
 	public boolean isEmpty() {
-	 
 		return topIndex<0;
 	}
-
-	@Override
 	public void printing() {
 		if(isEmpty()) {
-			System.out.println("This array is empty ! ");
+			System.out.println("This stack is empty !");
 		}else {
 			for(int i=0;i<=topIndex;i++) {
-				System.out.println(newArray[i]);
+				System.out.println(array[i]+"");
 			}
-				System.out.println();
-			
+			System.out.println();
 		}
-		 
 		
 	}
-	
 
 }

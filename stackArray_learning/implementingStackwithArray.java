@@ -1,4 +1,4 @@
-package stackAndQueue;
+package stackArray_learning;
 
 public class implementingStackwithArray implements isStackandQueue {
 	private int[] array;
