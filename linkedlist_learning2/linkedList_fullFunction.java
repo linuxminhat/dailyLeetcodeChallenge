@@ -97,6 +97,41 @@ public class linkedList_fullFunction {
 		}
 		return headNode;
 	}
+	//implementing function deleteToBetween 
+	public static Node deleteToBetween(Node headNode,int index) {
+		if(headNode==null||index<0) {
+			return null;
+		}
+		if(index==0) {
+			return deleteToHead(headNode);
+		}
+		int count=0;
+		boolean isFound = false;
+		Node curNode = headNode;
+		Node previousNode = null;
+		while(curNode!=null) {
+			if(count==index) {
+				//remove curNode
+				isFound=true;
+				break;
+				
+			}
+			previousNode=curNode;
+			curNode=curNode.next;
+			count++;
+		}
+		if(isFound==true) {
+			if(previousNode==null) {
+				return null;
+			}else {
+				if(curNode==null) {
+					return curNode;//do nothing 
+				}
+				previousNode.next=curNode.next;
+			}
+		}
+		return headNode;
+	}
 	//main function 
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
@@ -111,7 +146,7 @@ public class linkedList_fullFunction {
 		printingFunction(n1);
 		//testing OK
 //		//testing addToHead
-//		Node newNode1 = addToHead(n1,0);
+//		Node newNode1 = addToHead(n1,0)
 //		printingFunction(newNode1);
 //		//testing addToLast
 //		Node newNode2 = addToLast(n1,1000);
@@ -122,10 +157,13 @@ public class linkedList_fullFunction {
 //		//testing deleteToHead
 //		Node newNode4 = deleteToHead(n1);
 //		printingFunction(newNode4);
-		Node deletedNode = deleteToLast(n1);
-		printingFunction(deletedNode);
+//		Node deletedNode = deleteToLast(n1);
+//		printingFunction(deletedNode);
+		Node finalNode = deleteToBetween(n1,1);
+		printingFunction(finalNode);	
 		
 	
 	}
+	
 
 }
