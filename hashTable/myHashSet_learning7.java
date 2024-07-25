@@ -36,7 +36,8 @@ public class myHashSet_learning7 {
 		int hashKeyValue = hashFunction(key);
 		var bucket = myBucket[hashKeyValue];
 		int keyIndexValue = bucket.indexOf(key);
-		return keyIndexValue>=0;
+		return keyIndexValue>=0;//true 
+		//if its not => false
 	}
 
 }
