@@ -25,3 +25,5 @@ public class myHashMap_learning1 {
 	}
 
 }
+//Dở khi tập dữ liệu lớn 
+
