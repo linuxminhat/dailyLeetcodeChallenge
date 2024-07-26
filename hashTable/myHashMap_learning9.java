@@ -22,6 +22,12 @@ public class myHashMap_learning9 {
 			return false;
 		}
 	}
+	myHashMap_learning9(){;
+		myBucket = new ArrayList[SIZE];
+		for(int i=0;i<myBucket.length;i++) {
+			myBucket[i]=new ArrayList<>();
+		}
+	}
 	
 
 	//implementing all needed function 
@@ -31,7 +37,7 @@ public class myHashMap_learning9 {
 	public void put(int key,int value) {
 		int hashIndexValue = hashFunction(key);
 		var bucket = myBucket[hashIndexValue];
-		Data tempData = new Data(key,0);
+		Data tempData = new Data(key,value);
 		int keyIndexValue = bucket.indexOf(tempData);
 		if(keyIndexValue>=0) {
 			bucket.get(keyIndexValue).value=value;
@@ -40,10 +46,34 @@ public class myHashMap_learning9 {
 		}
 	}
 	public void remove(int key) {
+		int hashIndexValue = hashFunction(key);
+		var bucket = myBucket[hashIndexValue];
+		Data myDeletedData = new Data(key,0);
+		bucket.remove(myDeletedData);
 		
 	}
 	public int get(int key) {
-		return 0;
+		int hashIndexValue = hashFunction(key);
+		var bucket = myBucket[hashIndexValue];
+		Data myGetData = new Data(key,0);
+		int keyIndexValue = bucket.indexOf(myGetData);
+		if(keyIndexValue>=0) {
+			return bucket.get(keyIndexValue).value;// tra ve value 
+		}
+		return -1;
+	}
+	public static void main(String[] args) {
+		myHashMap_learning9 myMap = new myHashMap_learning9();
+		myMap.put(1, 1);
+		myMap.put(1, 2);
+		myMap.put(10, 2);
+		System.out.println("" + myMap.get(1));//value => 2 
+		System.out.println("" + myMap.get(2));
+		myMap.remove(1);
+		System.out.println(""+myMap.get(1));
+		System.out.println(""+myMap.get(10));
+//		System.out.println(""+myMap.get(10));
+		
 	}
 
 }
