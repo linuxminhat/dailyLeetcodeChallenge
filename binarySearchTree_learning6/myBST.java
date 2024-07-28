@@ -1,8 +1,8 @@
-package binarySearchTree_learning5;
+package binarySearchTree_learning6;
 
 public class myBST {
 	public treeNode root;
-	myBST(){
+	public myBST() {
 		
 	}
 	public treeNode inserting(treeNode myRoot,int value) {
@@ -10,30 +10,26 @@ public class myBST {
 			myRoot = new treeNode(value);
 			return myRoot;
 		}else {
-			treeNode tempNode = myRoot;//Phai tao ben ngoai vong lap
+			treeNode tempNode = myRoot;
 			while(true) {
-//				treeNode tempNode = myRoot;
-				//Case1 : greater 
+				//creating tempNode 
 				if(value>tempNode.value) {
 					if(tempNode.rightNode==null) {
 						tempNode.rightNode.value = value;
 						break;
-						//Finding a place and then break
-					}else{
+					}else {
 						tempNode = tempNode.rightNode;
 					}
-				}
-				else {
+				}else {
 					if(tempNode.leftNode==null) {
 						tempNode.leftNode.value=value;
 						break;
 					}else {
-						tempNode=tempNode.leftNode;
+						tempNode = tempNode.leftNode;
 					}
 				}
 			}
 		}
 		return myRoot;
 	}
-
 }
