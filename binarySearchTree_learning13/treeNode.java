@@ -1,7 +1,7 @@
-package binarySearchTree_learning3;
+package binarySearchTree_learning13;
 
 public class treeNode {
-	int  value;
+	int value;
 	treeNode leftNode;
 	treeNode rightNode;
 	treeNode(int value){
