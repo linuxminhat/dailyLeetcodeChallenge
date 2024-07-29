@@ -1,0 +1,95 @@
+package binarySearchTree_learning16;
+
+public class myBST {
+	public treeNode root;
+	public myBST(){
+		
+	}
+	public treeNode insert(treeNode myRoot, int value) {
+		if(myRoot==null) {
+			return null;
+		}else {
+			if(value>myRoot.value) {
+				if(myRoot.rightNode==null) {
+					myRoot.rightNode = new treeNode(value);
+					return myRoot.rightNode;
+				}else {
+					insert(myRoot.rightNode,value);
+				}
+				 
+			}else {
+				if(myRoot.leftNode==null) {
+					myRoot.leftNode= new treeNode(value);
+					return myRoot.leftNode;
+				}else {
+					insert(myRoot.leftNode,value);
+				}
+			}
+		}
+		return myRoot;
+	}
+	public treeNode findingLeftModeNode(treeNode myRoot) {
+		if(myRoot==null) {
+			return null;
+		}
+		treeNode leftModeNode = myRoot;
+		while(leftModeNode.leftNode!=null) {
+			leftModeNode = leftModeNode.leftNode;
+		}
+		return leftModeNode;
+	}
+	public treeNode delete(treeNode myRoot, int key) {
+		if(myRoot == null) {
+			return null;
+		}else{
+			//Common case 
+			if(key>myRoot.value) {
+				myRoot = delete(myRoot.rightNode,key);
+			}else {
+				myRoot = delete(myRoot.leftNode,key);
+			}
+			
+		}
+		//Separate Case 
+		//Case1 : 1 LeafNode 
+		if(myRoot.rightNode==null && myRoot.leftNode==null) {
+			return null;
+		}
+		//Case2 : 1 childNode 
+		if(myRoot.rightNode!=null && myRoot.leftNode==null) {
+			return myRoot.rightNode;
+		}
+		if(myRoot.rightNode==null && myRoot.leftNode!=null) {
+			return myRoot.leftNode;
+		}
+		//Case3 : 2 childNode 
+		if(myRoot.rightNode!=null && myRoot.leftNode!=null) {
+			treeNode leftModeNode = findingLeftModeNode(myRoot.rightNode);
+			myRoot.value = leftModeNode.value;
+			myRoot.rightNode = delete(myRoot.rightNode,leftModeNode.value);
+			
+		}
+		return myRoot;
+		
+	}
+	public treeNode searching(treeNode myRoot,int key) {
+		if(myRoot == null) {
+			return null;
+		}else {
+			if(key>myRoot.value) {
+				searching(myRoot.rightNode,key);
+			}else {
+				if(key<myRoot.value) {
+					searching(myRoot.leftNode,key);
+				}else {
+					if(key==myRoot.value) {
+						myRoot.value=key;
+					}
+				}
+			}
+		}
+		return myRoot;//This node contain key 
+	}
+	
+
+}
