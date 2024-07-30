@@ -21,7 +21,7 @@ package binarySearchTree_learning20;
 	    		return false;//Cay rong khong co duong di 
 	    	}
 	    	if(root.left==null && root.right==null) {
-	    		return root.val==targetSum;
+	    		return root.val==targetSum;//maybe its false => false => false => true 
 	    	}
 	    	int newTargetSum =  targetSum-root.val;
 	    	return hasPathSum(root.right,newTargetSum) || hasPathSum(root.right,newTargetSum);
