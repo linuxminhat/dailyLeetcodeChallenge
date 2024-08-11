@@ -36,4 +36,44 @@ public class myHeap1 {
 			parIndex=curIndex/2;
 		}
 	}
+	public int poll() {
+		if(isEmpty()==true) {
+			System.out.println("This heap is empty");
+			return -1;
+		}
+		int minRoot = array[1];
+		//heapify-down
+		array[1]=array[size];
+		size--;
+		int curIndex=1;
+		while((2*curIndex)<=size) {
+			int leftChildIndex=2*curIndex;
+			int rightChildIndex = leftChildIndex+1;
+			int smallerChildIndex = leftChildIndex;
+			if(rightChildIndex<=size && array[rightChildIndex]<array[leftChildIndex] ) {
+				smallerChildIndex = rightChildIndex;
+			}else {
+				smallerChildIndex = leftChildIndex;
+			}
+			if(array[curIndex]>array[smallerChildIndex]) {
+				swap(curIndex,smallerChildIndex);
+				curIndex=smallerChildIndex;
+				
+			}else {
+				//If its ok => break
+				break;
+				
+			}
+		}
+		
+		
+		return minRoot;
+	}
+	public static void main(String[] args) {
+		myHeap1 myHeap = new myHeap1();
+		myHeap.addFunction(10);
+		myHeap.addFunction(5);
+		myHeap.addFunction(1);
+		System.out.println(myHeap.poll());
+	}
 }

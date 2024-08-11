@@ -1,46 +1,55 @@
 package heap;
 
-public class myHeap5 {
-	private int MAX_SIZE = 100;
-	private int size;
+public class myHeap7 {
+	private int MAX_SIZE=100;
 	private int[] array = new int[MAX_SIZE];
-	public boolean isEmpty() {
-		return size==0;
+	private int size;
+	myHeap7() {
+		size=0;
 	}
-	public int peekHeap() {
+	public boolean isEmpty() {
+		System.out.println("This Heap is empty !");
+		return size==0;
+		//If size==0 => TRUE : This heap is empty
+	}
+	public int peek() {
 		if(isEmpty()==true) {
-			System.out.println("This heap is empty");
+			System.out.println("This Heap is empty");
 			return -1;
 		}
-		return 0;
+		return array[1];
 	}
-	 
-	public void swap(int i, int j) {
+	public void swap(int i,int j) {
 		int k=array[i];
 		array[i]=array[j];
 		array[j]=k;
 	}
-	public void add(int v) {
+	public void addFunction(int v) {
 		size++;
 		array[size]=v;
 		int curIndex=size;
 		int parIndex=curIndex/2;
 		while(array[parIndex]>array[curIndex]) {
 			swap(parIndex,curIndex);
-			curIndex=parIndex;//gan lai gia tri
-			parIndex=curIndex/2;//Tiep tuc tinh tien 
+			curIndex=parIndex;
+			parIndex=curIndex/2;
 		}
 	}
-	public int pollHeap() {
+	public int poll() {
+		if(isEmpty()==true) {
+			System.out.println("This heap is fucking empty !");
+			return -1;
+		}
+		//take value
 		int minRoot=array[1];
-		//heapify processing
+		//heapify
 		array[1]=array[size];
-		size--;
+		size--; 
+		int smallerChildIndex=0;
 		int curIndex=1;
 		while(curIndex*2<=size) {
 			int leftChildIndex=curIndex*2;
 			int rightChildIndex=leftChildIndex+1;
-			int smallerChildIndex=leftChildIndex;
 			if(rightChildIndex<=size) {
 				if(array[leftChildIndex]<=array[rightChildIndex]) {
 					smallerChildIndex=leftChildIndex;
@@ -48,7 +57,7 @@ public class myHeap5 {
 					smallerChildIndex=rightChildIndex;
 				}
 			}
-			if(array[curIndex]>=array[smallerChildIndex]) {
+			if(array[curIndex]>array[smallerChildIndex]) {
 				swap(curIndex,smallerChildIndex);
 				curIndex=smallerChildIndex;
 			}else {

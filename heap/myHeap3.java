@@ -33,5 +33,39 @@ public class myHeap3 {
 			parIndex=curIndex/2;
 		}
 	}
+	public int pollHeap() {
+		int minRoot=array[1];
+		array[1]=array[size];
+		size--;
+		//heapify 
+		int curIndex=1;
+		while(curIndex*2<=size) {
+			if(isEmpty()==true) {
+				System.out.println("This heap is empty !");
+				return -1;
+			}else {
+				int leftChildIndex=curIndex*2;
+				int smallerChildIndex=leftChildIndex;
+				int rightChildIndex=leftChildIndex+1;
+				if(rightChildIndex<=size) {
+					if(array[leftChildIndex]<=array[rightChildIndex]) {
+						smallerChildIndex=leftChildIndex;
+					}else {
+						smallerChildIndex=rightChildIndex;
+					}
+				}
+				if(array[curIndex]>array[smallerChildIndex]) {
+					swap(curIndex,smallerChildIndex);
+					curIndex=smallerChildIndex;
+				}else {
+					break;
+				}
+			}
+		}
+		
+		return minRoot;
+		
+	
+	}
 
 }
